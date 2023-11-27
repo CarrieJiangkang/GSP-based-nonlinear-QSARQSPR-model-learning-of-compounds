@@ -1,56 +1,32 @@
-% %%¶ÁÈ¡PAH¡ª¡ªBPÊı¾İ
-% P = which('PAH_Properties.xls');
-% [num,txt,raw_2] = xlsread(P);
-% raw_BP = raw_2;  %±£³ÖÔ­À´µÄ
-% raw_2(1,:) = [];
-% PAH_Log_P = raw_2(:,5);%È¡Log_PµÄÖµ 6
-% % PAH_BP([14,19,22,23,28,32,33,35,42,43,44,45,46,47,51,52,53,54,55,56,57,58,59,60,61,71,72,81,82],:) = [];
-% PAH_Log_P = cell2mat(PAH_Log_P);
-% %¹ØÓÚBPµÄÃèÊö·ûÊıÁ¿
-% P_des = which('PAH_Descriptors.xls');
-% [des_num,des_txt,raw_des] = xlsread(P_des);
-% Des_Log_P = raw_des;
-% Des_Log_P(:,1:3) = [];
-% Des_Log_P(1,:) = []; 
-% Des_Log_P = cell2mat(Des_Log_P);
-% % É¾³ıĞÔÖÊÖĞÃ»ÓĞµÄ»¯ºÏÎïÇÒºÍ¶ÔÓ¦µÄÃèÊö·û -999
-% id = find(PAH_Log_P == -999);
-% PAH_Log_P(id,:) = [];  
-% Des_Log_P(id,:) = [];  
-
-% % Des_BP([14,19,22,23,28,32,33,35,42,43,44,45,46,47,51,52,53,54,55,56,57,58,59,60,61,71,72,81,82],:) = [];
-
-%%**************************************************************
-% %%ÓÉÓÚPAHµÄÁ½¸öĞÔÖÊĞ§¹û²»ºÃ£¬ËùÒÔ»»C8Êı¾İ¼¯
-% %¢ÙĞÔÖÊ-S
-% P = which('C8_Properties.xls');  %ĞÔÖÊ
+% %â‘ æ€§è´¨-S
+% P = which('C8_Properties.xls');  %æ€§è´¨
 % [num_C8,tx_C8,raw_S] = xlsread(P);
-% raw_c8 = raw_S;  %±£³ÖÔ­À´µÄ
+% raw_c8 = raw_S;  %ä¿æŒåŸæ¥çš„
 % raw_S(1,:) = [];
-% % C8_BP = raw_S(:,3);%È¡BPµÄÖµ
+% % C8_BP = raw_S(:,3);%å–BPçš„å€¼
 % % C8_BP = cell2mat(C8_BP);
-% C8_S = raw_S(:,7);%È¡SµÄÖµ
+% C8_S = raw_S(:,7);%å–Sçš„å€¼
 % % C8_S = raw_S(:,end);%MV
 % C8_S = cell2mat(C8_S);
 % % % C8_S = sort(C8_S);
-% % % C8_TSA = raw_S(:,16);%È¡TSAµÄÖµ
+% % % C8_TSA = raw_S(:,16);%å–TSAçš„å€¼
 % % % C8_TSA = cell2mat(C8_TSA);
-% %¢Ú¹ØÓÚC8µÄÃèÊö·ûÊıÁ¿
+% %â‘¡å…³äºC8çš„æè¿°ç¬¦æ•°é‡
 % P_des = which('C8_Descriptors.xls');
 % [des_num,des_txt,raw_des] = xlsread(P_des);
 % des_C8 = raw_des;
 % des_C8(:,1:3) = [];
-% des_C8([1,20,21],:) = [];  %18*102µÄÃèÊö·û
+% des_C8([1,20,21],:) = [];  %18*102çš„æè¿°ç¬¦
 % des_C8 = cell2mat(des_C8);
 %% **************************************************************
-% % PhenetÊı¾İ¼¯
+% % Phenetæ•°æ®é›†
 % P = which('Phenet_Properties.xls');
 % [phenet_num,phenet_txt,phenet_2] = xlsread(P);
-% raw_act = phenet_2;  %±£³ÖÔ­À´µÄ
+% raw_act = phenet_2;  %ä¿æŒåŸæ¥çš„
 % phenet_2(1,:) = [];
-% phenet_act = phenet_2(:,4);%È¡»îĞÔÖµ
+% phenet_act = phenet_2(:,4);%å–æ´»æ€§å€¼
 % phenet_act = cell2mat(phenet_act);
-% % ¹ØÓÚPhenetµÄÃèÊö·ûÊıÁ¿
+% % å…³äºPhenetçš„æè¿°ç¬¦æ•°é‡
 % P_des = which('Phenet_Descriptors.xls');
 % [num_des,txt_des,raw_des] = xlsread(P_des);
 % des_Phenet = raw_des;
@@ -58,27 +34,27 @@
 % des_Phenet(1,:) = [];  
 % des_Phenet = cell2mat(des_Phenet);
 % x_x = des_Phenet(:,[15,53]);
-% %ÓÉÓÚºóÆÚÒªÔËÓÃMSDÃèÊö·ûºÍS3KÃèÊö·û£¬ËùÒÔÔÚ110¸ö»¯ºÏÎïÖĞÏÈÉ¾³ı
+% %ç”±äºåæœŸè¦è¿ç”¨MSDæè¿°ç¬¦å’ŒS3Kæè¿°ç¬¦ï¼Œæ‰€ä»¥åœ¨110ä¸ªåŒ–åˆç‰©ä¸­å…ˆåˆ é™¤
 % des_Phenet(:,[15,53]) = [];
 %% **************************************************************
-%% PCBÊı¾İ¼¯
-P = which('PCB_Properties.xls');  %ĞÔÖÊ
+%% PCBæ•°æ®é›†
+P = which('PCB_Properties.xls');  %æ€§è´¨
 [num_LogP,txt_LogP,raw_LogP] = xlsread(P);
-raw_LogP = raw_LogP;  %±£³ÖÔ­À´µÄ
+raw_LogP = raw_LogP;  %ä¿æŒåŸæ¥çš„
 raw_LogP(1,:) = [];
-PCB_logP = raw_LogP(:,6);%È¡LogPµÄÖµ   6    TSA  7
+PCB_logP = raw_LogP(:,6);%å–LogPçš„å€¼   6    TSA  7
 PCB_logP = cell2mat(PCB_logP);
-% ¹ØÓÚPCBµÄ  ÃèÊö·ûÊıÁ¿
-P_des = which('PCB_Descriptors.xls');  %ÃèÊö·û
+% å…³äºPCBçš„  æè¿°ç¬¦æ•°é‡
+P_des = which('PCB_Descriptors.xls');  %æè¿°ç¬¦
 [num_PCB,txt_PCB,raw_PCB] = xlsread(P_des);
 des_PCB = raw_PCB;
 des_PCB(:,1:3) = [];
 des_PCB(1,:) = [];  
 des_PCB = cell2mat(des_PCB);
-% É¾³ıĞÔÖÊÖĞÃ»ÓĞµÄ»¯ºÏÎïÇÒºÍ¶ÔÓ¦µÄÃèÊö·û -999
+% åˆ é™¤æ€§è´¨ä¸­æ²¡æœ‰çš„åŒ–åˆç‰©ä¸”å’Œå¯¹åº”çš„æè¿°ç¬¦ -999
 id = find(PCB_logP == -999);  
 PCB_logP(id,:) = [];   
 des_PCB(id,:) = [];  
-%Ìí¼ÓĞÂµÄÌØÕ÷
+%æ·»åŠ æ–°çš„ç‰¹å¾
 new_fea = des_PCB(:,[47,15,20,50,104]);
 des_PCB(:,[10,11,15,20,21,23,29,31,34,42,47,50,51,104])=[];
